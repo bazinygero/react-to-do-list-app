@@ -1,0 +1,13 @@
+@use './mixins' as m;
+
+%grid3 {
+    @include m.grid(stretch, center);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+%grid4 {
+    @include m.grid(stretch, center);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}

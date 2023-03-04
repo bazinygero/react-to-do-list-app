@@ -1,0 +1,97 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+#appContainer {
+    padding: 75px 25px 25px;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: auto, 100% 300px;
+    --blue: hsl(220, 98%, 61%);
+    --gradient: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    user-select: none;
+    &.dark {
+        --shadow: hsl(235, 21%, 5%);
+        --main-bg: hsl(235, 21%, 11%);
+        --text: hsl(234, 39%, 85%);
+        --hover: hsl(236, 33%, 92%);
+        --text2: hsl(234, 11%, 52%);
+        --border: hsl(233, 14%, 35%);
+        --app-bg: hsl(235, 24%, 19%);
+        background-image: url(../../Assets/bg-desktop-dark.jpg), var(--gradient);
+        background-color: var(--main-bg);
+    }
+    &.light {
+        --shadow: hsl(233, 11%, 84%);
+        --main-bg: hsl(0, 0%, 98%);
+        --text: hsl(235, 19%, 35%);
+        --hover: hsl(236, 33%, 92%);
+        --text2: hsl(236, 9%, 61%);
+        --border: hsl(236, 33%, 92%);
+        --app-bg: hsl(0, 0%, 98%);
+        background-image: url(../../Assets/bg-desktop-light.jpg), var(--gradient);
+        background-color: var(--app-bg);
+    }
+    #app {
+        width: 100%;
+        max-width: 540px;
+        margin: auto;
+        color: var(--text);
+        #todosContainer {
+            border-radius: 5px;
+        }
+        > div,
+        > section,
+        > footer {
+            background-color: var(--app-bg);
+        }
+        #todosContainer {
+            margin-bottom: 50px;
+            box-shadow: 0px 30px 30px 0px var(--shadow);
+        }
+        #note {
+            text-align: center;
+            color: var(--text2);
+            font-size: 14px;
+            margin-bottom: 75px;
+        }
+    }
+}
+
+@media (min-width: 1441px) {
+    #appContainer {
+        max-width: 1440px;
+        margin: auto;
+        border: 1px solid;
+        border-color: transparent hsl(0, 0%, 80%) transparent;
+    }
+}
+
+@media (min-width: 501px) {
+    #appContainer {
+        #app {
+            #todosContainer {
+                margin-bottom: 120px;
+            }
+        }
+    }
+}
+
+@media (max-width: 376px) {
+    #appContainer {
+        padding: 45px 25px 25px;
+        background-size: auto, 100% 200px;
+
+        &.dark {
+            background-image: url(../../Assets/bg-mobile-dark.jpg), var(--gradient);
+        }
+        &.light {
+            background-image: url(../../Assets/bg-mobile-light.jpg), var(--gradient);
+        }
+        #app {
+            #todosContainer {
+                margin-bottom: 110px;
+            }
+        }
+    }
+}

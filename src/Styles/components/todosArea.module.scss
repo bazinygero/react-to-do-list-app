@@ -1,0 +1,120 @@
+@use "../abstracts/mixins" as m;
+
+#todosArea {
+  #todoList {
+    min-height: 65px;
+    border-radius: 5px 5px 0px 0px;
+    overflow: hidden;
+
+    .todoItem {
+        @include m.grid(center, space-between);
+        grid-template-columns: auto auto;
+        gap: 10px;
+        padding: 20px;
+        background-color: var(--app-bg);
+        border-bottom: 1px solid var(--border);
+        .todoTitle {
+            @include m.grid(center, space-between);
+            grid-template-columns: auto 1fr auto;
+            cursor: pointer;
+
+            .checkTodo {
+                width: 23px;
+                height: 23px;
+                border: 1px solid var(--border);
+                border-radius: 50%;
+            }
+
+            .todoText {
+                margin-top: 5px;
+                padding-left: 20px;
+                line-height: 1.3;
+            }
+        }
+
+        .deleteItem {
+            -webkit-mask-image: url(../../Assets/icon-cross.svg);
+            mask-image: url(../../Assets/icon-cross.svg);
+            background-color: var(--text2);
+            width: 18px;
+            height: 18px;
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+        &:hover {
+            .deleteItem {
+                opacity: 1;
+            }
+        }
+        &[data-checked="true"] {
+        .checkTodo {
+            background-image: url(../../Assets/icon-check.svg), var(--gradient);
+            background-repeat: no-repeat;
+            background-position: center;
+            border: none;
+        }
+
+        .todoText {
+            text-decoration: line-through;
+            opacity: 0.25;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+    #todosArea {
+        #todoList {
+            .todoItem {
+                .deleteItem {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 499px) {
+    #todosArea {
+        #todoList {
+            .todoItem {
+                .deleteItem {
+                    width: 15px;
+                    height: 15px;
+                    -webkit-mask-size: 15px;
+                    mask-size: 15px;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 374px) {
+    #todosArea {
+        #todoList {
+            .todoItem {
+                padding: 15px;
+
+                .todoTitle {
+                    .checkTodo {
+                        width: 20px;
+                        height: 20px;
+                    }
+                    .todoText {
+                        margin: 0px;
+                        padding-left: 10px;
+                    }
+                }
+
+                .deleteItem {
+                    width: 12px;
+                    height: 12px;
+                    -webkit-mask-size: 12px;
+                    mask-size: 12px;
+                }
+            }
+        }
+    }
+}

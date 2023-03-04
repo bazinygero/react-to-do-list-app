@@ -1,0 +1,31 @@
+@mixin grid($align, $justify) {
+    display: grid;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin flex($align, $justify) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin center-pos($dir) {
+    @if $dir == 'a' {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    } @else if $dir == 'v' {
+        top: 50%;
+        transform: translateY(-50%);
+    } @else if $dir == 'h' {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@mixin line-hover($color1, $color2) {
+    background-image: linear-gradient(to left, $color1 50%, $color2 50%);
+    background-size: 200%;
+    background-position: right;
+}

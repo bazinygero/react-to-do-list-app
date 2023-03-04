@@ -1,0 +1,53 @@
+@use '../abstracts/mixins' as m;
+
+#appHeader {
+    @include m.flex(center, space-between);
+    margin-bottom: 40px;
+    #appName {
+        text-transform: uppercase;
+        letter-spacing: 15px;
+        color: hsl(0, 0%, 100%);
+        font-size: 40px;
+    }
+    #modeToggler {
+        width: 26px;
+        height: 26px;
+        background-repeat: no-repeat;
+        &.dark {
+            background-image: url(../../Assets/icon-sun.svg);
+        }
+        &.light {
+            background-image: url(../../Assets/icon-moon.svg);
+        }
+    }
+}
+
+@media (max-width: 499px) {
+    #appHeader {
+        margin-bottom: 35px;
+        #appName {
+            font-size: 32px;
+            letter-spacing: 13px;
+        }
+        #modeToggler {
+            width: 23px;
+            height: 23px;
+            background-size: 100%;
+        }
+    }
+}
+
+@media (max-width: 374px) {
+    #appHeader {
+        margin-bottom: 30px;
+        #appName {
+            font-size: 26px;
+            letter-spacing: 10px;
+        }
+        #modeToggler {
+            width: 20px;
+            height: 20px;
+            background-size: 100%;
+        }
+    }
+}

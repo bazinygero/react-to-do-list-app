@@ -1,0 +1,66 @@
+@use '../abstracts/mixins' as m;
+
+#addTodo {
+    @include m.grid(center, center);
+    grid-template-columns: auto 1fr;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    padding: 20px;
+    #createTodo {
+        width: 23px;
+        height: 23px;
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+    #todoInput {
+        display: block;
+        width: 100%;
+        height: 20px;
+        border: none;
+        background-color: transparent;
+        color: var(--text);
+        padding-top: 3px;
+        caret-color: var(--blue);
+        &:focus {
+            outline: none;
+        }
+        &, 
+        &::placeholder {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 18px;
+        }
+        &::placeholder {
+            color: var(--text2);
+        }
+    }
+}
+
+@media (max-width: 499px) {
+    #addTodo {
+        #todoInput {
+            &,
+            &::placeholder {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (max-width: 374px) {
+    #addTodo {
+        padding: 15px;
+        margin-bottom: 15px;
+        #createTodo {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        #todoInput {
+            &,
+            &::placeholder {
+                font-size: 13px;
+            }
+        }
+    }
+}
